@@ -1,0 +1,34 @@
+# 개발할 때에만 create-drop 또는 update를 사용하고 운영 환경에서는 validate를 사용합니다.
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+
+  datasource:
+    hikari:
+      main:
+        username: geesoo
+        password: geesoo
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://175.193.13.201:3306/location?serverTimezone=Asia/Seoul
+  devtools:
+    restart:
+      enabled: true
+
+relay-location:
+  host: "http://3.36.133.18:8080"
+  aria.key.generator: 6Y014VPT1PG46Y1BMSZT2ID340T9MMM2 # Aria256 암호화시 사용되는 키
+  gecoder:
+    url: "http://api.vworld.kr/req/address"
+    key: "EB2CA64A-6693-3501-9AE6-A41056E2C592"
+  schedule:
+    cron:
+      delete : "0 0 1 * * *"
+  sch-seconds: 30
+
+
